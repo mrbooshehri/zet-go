@@ -1,0 +1,7 @@
+# Working on ZET
+
+ZET is a local-first Zettelkasten whose authoritative data is Markdown in timestamp-named directories. Preserve existing notes byte-for-byte during reads and indexing; do not require frontmatter or rename files. Keep CLI and eventual TUI adapters separate from note and graph logic. Validate IDs before constructing paths, never follow note symlinks outside the root, execute editors and Git without shell interpolation, and never stage unrelated files or force-push. Do not remove existing notes. New-note cleanup must be restricted to files created by that operation.
+
+Use small Go packages and explicit dependencies. Wrap errors with context and return them to the command boundary. Add tests with temporary directories for every behavior change, including compatibility and failure cases; do not use a real notes directory in tests. Run `gofmt`, `go test ./...`, `go vet ./...`, and `go build ./...`. Document behavior and intentional compatibility changes when changing commands or storage. New dependencies require a clear purpose and version pin. Persisted format changes require an explicit, reversible migration and tests against legacy notes.
+
+Keep interactive interfaces keyboard-first, responsive, and usable in small terminals; never let shortcuts intercept text input. Avoid terminal control sequences from note content. Git is optional; never push implicitly without explicit configuration.

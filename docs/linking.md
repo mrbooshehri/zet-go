@@ -1,0 +1,7 @@
+# Linking
+
+Use `[description](../20261113103512/README.md)` or `[[20261113103512]]` for note relationships. Relative Markdown links may have a fragment. Goldmark parses Markdown links, including reference-style links; links in code are ignored. Links to other kinds of paths are ignored by the note graph. Each source-target pair appears once; the first description is retained. Incoming links, missing targets, and orphan notes are derived without changing files.
+
+To create a relationship in the TUI, select the source note and press uppercase `L`. Move through the target list with `j`/`k` or the arrow keys, or press `/` to search targets. Press Enter to finish searching, then Enter again to create the link; Escape cancels. You can also run `zet link <source-id> <target-id>`. Links are directed: the source gains an outgoing link and the target gains a backlink. Self-links and existing relationships are rejected.
+
+ZET appends a standard relative Markdown link without rewriting existing text. If the last heading is not `## Related`, it appends a new Related section to avoid inserting into another section; this can result in more than one Related heading. If an unclosed Markdown block would hide the new link, ZET reports an error and leaves the file unchanged. Edit the link description or reorganize sections in your editor if desired. Relationship creation requires `links.markdown_links: true` and does not automatically commit or push the change.
